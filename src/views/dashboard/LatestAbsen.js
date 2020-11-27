@@ -79,7 +79,7 @@ const LatestOrders = ({ className, ...rest }) => {
                   <TableCell>{absen.nis}</TableCell>
                   <TableCell>{absen.nama}</TableCell>
                   <TableCell>{absen.kelas}</TableCell>
-                  <TableCell>undefined</TableCell>
+                  <TableCell>{absen.hour}</TableCell>
                   <TableCell>{absen.date}</TableCell>
                   <TableCell>
                     <Chip color="primary" label={absen.status} size="small" />
