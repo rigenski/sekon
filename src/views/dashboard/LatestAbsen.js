@@ -74,18 +74,21 @@ const LatestOrders = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {absen.map(absen => (
-                <TableRow hover key={absen._id}>
-                  <TableCell>{absen.nis}</TableCell>
-                  <TableCell>{absen.nama}</TableCell>
-                  <TableCell>{absen.kelas}</TableCell>
-                  <TableCell>{absen.hour}</TableCell>
-                  <TableCell>{absen.date}</TableCell>
-                  <TableCell>
-                    <Chip color="primary" label={absen.status} size="small" />
-                  </TableCell>
-                </TableRow>
-              ))}
+              {absen
+                .slice(0, 10)
+                .reverse()
+                .map(absen => (
+                  <TableRow hover key={absen._id}>
+                    <TableCell>{absen.nis}</TableCell>
+                    <TableCell>{absen.nama}</TableCell>
+                    <TableCell>{absen.kelas}</TableCell>
+                    <TableCell>{absen.hour}</TableCell>
+                    <TableCell>{absen.date}</TableCell>
+                    <TableCell>
+                      <Chip color="primary" label={absen.status} size="small" />
+                    </TableCell>
+                  </TableRow>
+                ))}
             </TableBody>
           </Table>
         </Box>

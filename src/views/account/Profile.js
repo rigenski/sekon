@@ -37,32 +37,9 @@ const Profile = ({ className, ...rest }) => {
           <Typography color="textSecondary" gutterBottom variant="h5">
             Administrator
           </Typography>
-          {/* <Typography color="textSecondary" variant="body1">
-            {`${user.tagline}`}
-          </Typography> */}
-          {/* <Typography
-            className={classes.dateText}
-            color="textSecondary"
-            variant="body1"
-          >
-            {`${moment().format('hh:mm A')} ${user.timezone}`}
-          </Typography> */}
         </Box>
       </CardContent>
       <Divider />
-      <CardActions>
-        <input
-          className={classes.input}
-          id="update-profile"
-          type="file"
-          hidden
-        />
-        <label htmlFor="update-profile">
-          <Button color="primary" component="span" variant="text">
-            Upload picture
-          </Button>
-        </label>
-      </CardActions>
     </Card>
   );
 };

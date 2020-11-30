@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AuthContext } from './../../../App';
 import {
@@ -15,9 +15,9 @@ import {
 import {
   BarChart as BarChartIcon,
   ShoppingBag as ShoppingBagIcon,
-  Lock as LockIcon,
   User as UserIcon,
-  Users as UsersIcon
+  Users as UsersIcon,
+  LogOut as LogoutIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -42,11 +42,6 @@ const items = [
     icon: UserIcon,
     title: 'Account'
   }
-  // {
-  //   href: '/login',
-  //   icon: LockIcon,
-  //   title: 'Login'
-  // }
 ];
 
 const useStyles = makeStyles(() => ({
@@ -67,14 +62,8 @@ const useStyles = makeStyles(() => ({
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   if (openMobile && onMobileClose) {
-  //     onMobileClose();
-  //   }
-  // }, [location.pathname]);
+  const navigate = useNavigate();
+  const { state, dispatch } = useContext(AuthContext);
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
@@ -103,6 +92,16 @@ const NavBar = ({ onMobileClose, openMobile }) => {
               icon={item.icon}
             />
           ))}
+          <NavItem
+            href="/login"
+            title="Logout"
+            icon={LogoutIcon}
+            onClick={() =>
+              dispatch({
+                type: 'LOGOUT'
+              })
+            }
+          />
         </List>
       </Box>
     </Box>

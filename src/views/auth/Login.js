@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import {
+  Avatar,
   Box,
   Button,
   Container,
@@ -21,12 +22,16 @@ const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark,
     height: '100%',
-    paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
+    paddingBottom: theme.spacing(3)
   },
   statsItem: {
     alignItems: 'center',
     display: 'flex'
+  },
+  avatar: {
+    height: 120,
+    width: 120,
+    marginBottom: theme.spacing(8)
   }
 }));
 
@@ -111,7 +116,8 @@ const LoginView = () => {
         justifyContent="center"
       >
         <Container maxWidth="sm">
-          <CardContent>
+          <CardContent align="center">
+            <Avatar className={classes.avatar} src="/static/logo.svg" />
             <Typography
               align="center"
               color="primary"

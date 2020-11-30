@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
@@ -25,7 +26,6 @@ const useStyles = makeStyles(theme => ({
 
 const Results = ({ className, siswas, ...rest }) => {
   const classes = useStyles();
-  const [selectedSiswaIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
 
@@ -33,7 +33,7 @@ const Results = ({ className, siswas, ...rest }) => {
     setLimit(event.target.value);
   };
 
-  const handlePageChange = newPage => {
+  const handlePageChange = (event, newPage) => {
     setPage(newPage);
   };
 
@@ -51,11 +51,7 @@ const Results = ({ className, siswas, ...rest }) => {
             </TableHead>
             <TableBody>
               {siswas.slice(0, limit).map(siswa => (
-                <TableRow
-                  hover
-                  key={siswa.nis}
-                  selected={selectedSiswaIds.indexOf(siswa.id) !== -1}
-                >
+                <TableRow hover key={siswa.nis}>
                   <TableCell>
                     <Box alignItems="center" display="flex">
                       <Avatar className={classes.avatar} src={siswa.photo}>
@@ -81,7 +77,7 @@ const Results = ({ className, siswas, ...rest }) => {
         onChangeRowsPerPage={handleLimitChange}
         page={page}
         rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25, 50]}
+        rowsPerPageOptions={[5, 10, 25, 100, 500]}
       />
     </Card>
   );
