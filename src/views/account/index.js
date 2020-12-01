@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Profile from './Profile';
-import ProfileDetails from './ProfileDetails';
-import { AuthContext } from './../../App';
+// import ProfileDetails from './ProfileDetails';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,11 +16,11 @@ const useStyles = makeStyles(theme => ({
 
 const Account = () => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
+  const status = localStorage.getItem('isAuthenticated');
 
-  if (!state.isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  // if (!status) {
+  //   return <Navigate to="/login" />;
+  // }
 
   return (
     <Page className={classes.root} title="Account">

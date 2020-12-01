@@ -28,7 +28,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
   const navigate = useNavigate();
 
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
@@ -49,7 +49,6 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               )
             }
           >
-            {/* {state.isAuthenticated} */}
             <InputIcon />
           </IconButton>
         </Hidden>

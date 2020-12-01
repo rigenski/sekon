@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { AuthContext } from './../../../App';
 import {
@@ -62,24 +62,24 @@ const useStyles = makeStyles(() => ({
 
 const NavBar = ({ onMobileClose, openMobile }) => {
   const classes = useStyles();
-  const navigate = useNavigate();
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
       <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        {/* <Avatar
+        <Avatar
           className={classes.avatar}
           component={RouterLink}
-          src={state.user.photo}
+          src={user.photo}
           to="/app/account"
-        /> */}
-        {/* <Typography className={classes.name} color="textPrimary" variant="h5">
-          {state.user.nama}
+        />
+        <Typography className={classes.name} color="textPrimary" variant="h5">
+          {user.nama}
         </Typography>
         <Typography color="textSecondary" variant="body2">
           Administrator
-        </Typography> */}
+        </Typography>
       </Box>
       <Divider />
       <Box p={2}>

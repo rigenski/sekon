@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
@@ -33,7 +32,7 @@ const Results = ({ className, siswas, ...rest }) => {
     setLimit(event.target.value);
   };
 
-  const handlePageChange = (event, newPage) => {
+  const handlePageChange = newPage => {
     setPage(newPage);
   };
 
@@ -82,10 +81,5 @@ const Results = ({ className, siswas, ...rest }) => {
     </Card>
   );
 };
-
-// Results.propTypes = {
-//   className: PropTypes.string,
-//   siswas: PropTypes.array.isRequired
-// };
 
 export default Results;

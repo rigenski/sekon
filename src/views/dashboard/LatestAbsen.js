@@ -1,13 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import clsx from 'clsx';
 import axios from 'axios';
-import moment from 'moment';
-import { v4 as uuid } from 'uuid';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import PropTypes from 'prop-types';
 import {
   Box,
-  Button,
   Card,
   CardHeader,
   Chip,
@@ -19,7 +16,6 @@ import {
   TableRow,
   makeStyles
 } from '@material-ui/core';
-import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import { AuthContext } from './../../App';
 
 const useStyles = makeStyles(() => ({
@@ -33,12 +29,13 @@ const LatestOrders = ({ className, ...rest }) => {
   const classes = useStyles();
   const { state } = useContext(AuthContext);
   const [absen, setAbsen] = useState([]);
+  const token = localStorage.getItem('token');
 
   const fetchData = () => {
     let config = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: 'Bearer ' + state.token
+        Authorization: 'Bearer ' + token
       }
     };
 
@@ -52,9 +49,7 @@ const LatestOrders = ({ className, ...rest }) => {
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line
   }, []);
-  // console.log(absen);
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -93,16 +88,6 @@ const LatestOrders = ({ className, ...rest }) => {
           </Table>
         </Box>
       </PerfectScrollbar>
-      {/* <Box display="flex" justifyContent="flex-end" p={2}>
-        <Button
-          color="primary"
-          endIcon={<ArrowRightIcon />}
-          size="small"
-          variant="text"
-        >
-          View all
-        </Button>
-      </Box> */}
     </Card>
   );
 };

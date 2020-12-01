@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import axios from 'axios';
+import XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 import {
   Avatar,
@@ -14,6 +17,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import { AuthContext } from './../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,10 +35,58 @@ const useStyles = makeStyles(theme => ({
 
 const ProductCard = ({ className, product, api, date, ...rest }) => {
   const classes = useStyles();
+  const { state } = useContext(AuthContext);
 
-  const absenClass = () => {
-    console.log(`${api}${date}/${product.kelas}`);
+  const token = localStorage.getItem('token');
+
+  const EXCEL_TYPE =
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
+
+  const EXCEL_EXTENSION = '.xlsx';
+
+  let config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    }
   };
+
+  let data;
+
+  const fetchData = async () => {
+    const fetch = await axios.get(
+      state.api.absen + date + '/' + product.kelas,
+      config
+    );
+    data = fetch.data.result;
+  };
+
+  const absen = () => {
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = {
+      Sheets: {
+        data: worksheet
+      },
+      SheetNames: ['data']
+    };
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: 'xlsx',
+      type: 'array'
+    });
+    saveAsExcel(excelBuffer, 'absen');
+  };
+
+  function saveAsExcel(buffer, filename) {
+    const data = new Blob([buffer], { type: EXCEL_TYPE });
+    saveAs(
+      data,
+      filename + '_' + product.kelas + '_export_' + date + EXCEL_EXTENSION
+    );
+  }
+
+  useEffect(() => {
+    fetchData();
+  });
 
   return (
     <Card className={clsx(classes.root, className)} {...rest}>
@@ -62,11 +114,7 @@ const ProductCard = ({ className, product, api, date, ...rest }) => {
             </Typography>
           </Grid>
           <Grid className={classes.statsItem} item>
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={() => absenClass()}
-            >
+            <Button color="primary" variant="contained" onClick={() => absen()}>
               Download
             </Button>
           </Grid>

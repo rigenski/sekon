@@ -1,6 +1,6 @@
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import React, { createContext, useReducer } from 'react';
-import { useRoutes } from 'react-router-dom';
+import React, { createContext, useReducer, useEffect } from 'react';
+import { useRoutes, useNavigate } from 'react-router-dom';
 import { ThemeProvider } from '@material-ui/core';
 import GlobalStyles from 'src/components/GlobalStyles';
 import 'src/mixins/chartjs';
@@ -25,7 +25,8 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
       localStorage.setItem('user', JSON.stringify(action.payload.admin));
-      localStorage.setItem('token', JSON.stringify(action.payload.token));
+      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('isAuthenticated', true);
       return {
         ...state,
         isAuthenticated: true,
@@ -34,7 +35,9 @@ const reducer = (state, action) => {
       };
 
     case 'LOGOUT':
-      localStorage.clear();
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      localStorage.setItem('isAuthenticated', false);
       return {
         ...state,
         isAuthenticated: false,
@@ -47,7 +50,16 @@ const reducer = (state, action) => {
 
 const App = () => {
   const routing = useRoutes(routes);
+  const navigate = useNavigate();
   const [state, dispatch] = useReducer(reducer, initialState);
+  const user = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    if (user) {
+    } else {
+      navigate('/login', { replace: true });
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>

@@ -25,8 +25,9 @@ const ProductList = () => {
   const date = moment().format('YYYY-MM-DD');
   const [products] = useState(data);
   const { state } = useContext(AuthContext);
+  const status = localStorage.getItem('isAuthenticated');
 
-  // if (!state.isAuthenticated) {
+  // if (!status) {
   //   return <Navigate to="/login" />;
   // }
 

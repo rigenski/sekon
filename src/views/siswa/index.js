@@ -20,6 +20,7 @@ const SiswaListView = () => {
   const classes = useStyles();
   const { state } = useContext(AuthContext);
   const [siswas, setSiswas] = useState([]);
+  const status = localStorage.getItem('isAuthenticated');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,9 +31,9 @@ const SiswaListView = () => {
     fetchData();
   }, []);
 
-  if (!state.isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  // if (!status) {
+  //   return <Navigate to="/login" />;
+  // }
   return (
     <Page className={classes.root} title="Siswa">
       <Container maxWidth={false}>

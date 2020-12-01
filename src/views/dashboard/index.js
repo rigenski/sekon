@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
@@ -6,8 +6,7 @@ import TotalGuru from './TotalGuru';
 import LatestAbsen from './LatestAbsen';
 import TotalSiswa from './TotalSiswa';
 import TotalKelas from './TotalKelas';
-import TrafikKelas from './TrafikKelas';
-import { AuthContext } from './../../App';
+// import TrafikKelas from './TrafikKelas';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,11 +19,11 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
+  const status = localStorage.getItem('isAuthenticated');
 
-  if (!state.isAuthenticated) {
-    return <Navigate to="/login" />;
-  }
+  // if (!status) {
+  //   return <Navigate to="/login" />;
+  // }
 
   return (
     <Page className={classes.root} title="Dashboard">
