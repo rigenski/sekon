@@ -14,10 +14,10 @@ const initialState = {
   user: null,
   token: null,
   api: {
-    admin: 'http://sekon.herokuapp.com/api/v2/admin/',
-    siswa: 'http://sekon.herokuapp.com/api/v2/siswa/',
-    absen: 'http://sekon.herokuapp.com/api/v2/absen/',
-    guru: 'http://sekon.herokuapp.com/api/v2/guru/'
+    admin: 'https://sekon.herokuapp.com/api/v2/admin/',
+    siswa: 'https://sekon.herokuapp.com/api/v2/siswa/',
+    absen: 'https://sekon.herokuapp.com/api/v2/absen/',
+    guru: 'https://sekon.herokuapp.com/api/v2/guru/'
   }
 };
 
