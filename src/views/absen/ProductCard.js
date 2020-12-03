@@ -77,6 +77,7 @@ const ProductCard = ({ className, product, api, date, ...rest }) => {
   };
 
   function saveAsExcel(buffer, filename) {
+    console.log('saveAsExcel');
     const data = new Blob([buffer], { type: EXCEL_TYPE });
     saveAs(
       data,
