@@ -7,6 +7,7 @@ import Siswa from 'src/views/siswa';
 import Dashboard from 'src/views/dashboard';
 import Login from 'src/views/auth/Login';
 import Absen from 'src/views/absen';
+import Jadwal from 'src/views/jadwal';
 import NotFoundView from 'src/views/errors/NotFoundView';
 
 const routes = [
@@ -18,6 +19,7 @@ const routes = [
       { path: 'siswa', element: <Siswa /> },
       { path: 'dashboard', element: <Dashboard /> },
       { path: 'absen', element: <Absen /> },
+      { path: 'jadwal', element: <Jadwal /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

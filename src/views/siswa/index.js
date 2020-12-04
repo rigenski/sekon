@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
 import { Box, Container, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import Results from './Results';
@@ -20,7 +19,6 @@ const SiswaListView = () => {
   const classes = useStyles();
   const { state } = useContext(AuthContext);
   const [siswas, setSiswas] = useState([]);
-  const status = localStorage.getItem('isAuthenticated');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,9 +29,6 @@ const SiswaListView = () => {
     fetchData();
   }, []);
 
-  // if (!status) {
-  //   return <Navigate to="/login" />;
-  // }
   return (
     <Page className={classes.root} title="Siswa">
       <Container maxWidth={false}>

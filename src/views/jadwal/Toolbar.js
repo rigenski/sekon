@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import XLSX from 'xlsx';
+import React, { useEffect, useContext } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
+import { Box, Button, makeStyles, Input } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
 import { AuthContext } from '../../App';
-
-import { Box, Button, makeStyles, Input } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -19,10 +19,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Toolbar = ({ className, ...rest }) => {
+const Toolbar = ({ className, api, date, ...rest }) => {
   const classes = useStyles();
   const { state } = useContext(AuthContext);
-
   const token = localStorage.getItem('token');
   let selectedFile;
 
@@ -45,27 +44,26 @@ const Toolbar = ({ className, ...rest }) => {
           const config = {
             headers: {
               'Access-Control-Allow-Origin': '*',
-              'Contet-Type': 'application/json'
-              // Authorization: 'Bearer ' + token
+              'Contet-Type': 'application/json',
+              Authorization: 'Bearer ' + token
             }
           };
-          console.log(rowObject);
 
           rowObject.map(row =>
             axios
               .post(
-                `${state.api.siswa}`,
+                state.api.jadwal,
                 {
+                  hari: row.hari,
                   kelas: row.kelas,
-                  nama: row.nama,
-                  nis: row.nis,
-                  password: row.password
+                  mapel: row.mapel,
+                  jam: row.jam
                 },
                 config
               )
               .then(res => {
                 ReactDOM.render(
-                  <Alert severity="success">Siswa berhasil ditambahkan</Alert>,
+                  <Alert severity="success">Jadwal berhasil ditambahkan</Alert>,
                   document.getElementById('alert-handler')
                 );
               })
@@ -81,7 +79,9 @@ const Toolbar = ({ className, ...rest }) => {
         <Input
           accept=".xls,.xlsx"
           className={classes.input}
-          onChange={e => handleChange(e)}
+          onChange={e => {
+            handleChange(e);
+          }}
           id="file"
           type="file"
           component="span"
@@ -93,7 +93,7 @@ const Toolbar = ({ className, ...rest }) => {
           onClick={() => {
             handleClick();
           }}
-          className={classes.exportButton}
+          className={classes.importButton}
         >
           Export
         </Button>

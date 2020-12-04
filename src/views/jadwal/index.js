@@ -5,7 +5,7 @@ import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
 import ProductCard from './ProductCard';
 import data from './data';
-import { AuthContext } from './../../App';
+import { AuthContext } from '../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {

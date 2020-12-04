@@ -1,12 +1,10 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Page from 'src/components/Page';
 import TotalGuru from './TotalGuru';
 import LatestAbsen from './LatestAbsen';
 import TotalSiswa from './TotalSiswa';
 import TotalKelas from './TotalKelas';
-// import TrafikKelas from './TrafikKelas';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,11 +17,6 @@ const useStyles = makeStyles(theme => ({
 
 const Dashboard = () => {
   const classes = useStyles();
-  const status = localStorage.getItem('isAuthenticated');
-
-  // if (!status) {
-  //   return <Navigate to="/login" />;
-  // }
 
   return (
     <Page className={classes.root} title="Dashboard">
@@ -38,9 +31,6 @@ const Dashboard = () => {
           <Grid item lg={4} sm={6} xl={4} xs={12}>
             <TotalKelas />
           </Grid>
-          {/* <Grid item lg={4} md={12} xl={3} xs={12}>
-            <TrafikKelas />
-          </Grid> */}
           <Grid item lg={12} md={12} xl={12} xs={12}>
             <LatestAbsen />
           </Grid>

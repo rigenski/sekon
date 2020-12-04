@@ -17,7 +17,8 @@ import {
   ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   Users as UsersIcon,
-  LogOut as LogoutIcon
+  LogOut as LogoutIcon,
+  BookOpen as BookOpenIcon
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -36,6 +37,11 @@ const items = [
     href: '/app/absen',
     icon: ShoppingBagIcon,
     title: 'Absen'
+  },
+  {
+    href: '/app/jadwal',
+    icon: BookOpenIcon,
+    title: 'Jadwal'
   },
   {
     href: '/app/account',

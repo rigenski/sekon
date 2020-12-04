@@ -78,17 +78,9 @@ const Toolbar = ({ className, api, date, ...rest }) => {
     saveAsExcel(excelBufferAll, 'absenAll');
   };
 
-  function blobToFile(theBlob, fileName) {
-    theBlob.lastModifiedDate = new Date();
-    theBlob.name = fileName;
-    return theBlob;
-  }
-
   function saveAsExcel(buffer, filename) {
     const data = new Blob([buffer], { type: EXCEL_TYPE });
-    const test = blobToFile(data, `${filename}.xlsx`);
-    // console.log(blobToFile(data, `${filename}.xlsx`));
-    saveAs(test, filename + '_export_' + date + EXCEL_EXTENSION);
+    saveAs(data, filename + '_export_' + date + EXCEL_EXTENSION);
   }
 
   useEffect(() => {

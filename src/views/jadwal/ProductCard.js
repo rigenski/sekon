@@ -17,7 +17,7 @@ import {
   makeStyles
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import { AuthContext } from './../../App';
+import { AuthContext } from '../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -108,7 +108,12 @@ const ProductCard = ({ className, product, api, date, ...rest }) => {
       <Divider />
       <Box p={2}>
         <Grid container justify="space-between" spacing={2}>
-          <Grid className={classes.statsItem} item></Grid>
+          <Grid className={classes.statsItem} item>
+            <AccessTimeIcon className={classes.statsIcon} color="action" />
+            <Typography color="textSecondary" display="inline" variant="body2">
+              Updated 2hr ago
+            </Typography>
+          </Grid>
           <Grid className={classes.statsItem} item>
             <Button color="primary" variant="contained" onClick={() => absen()}>
               Download
