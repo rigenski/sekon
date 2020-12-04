@@ -1,13 +1,12 @@
-import React, { useEffect, useContext } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useContext } from 'react';
 import axios from 'axios';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import XLSX from 'xlsx';
-import { saveAs } from 'file-saver';
 import { Box, Button, makeStyles, Input } from '@material-ui/core';
 import Alert from '@material-ui/lab/Alert';
-import { AuthContext } from '../../App';
+import { AuthContext } from './../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {},
@@ -23,6 +22,7 @@ const Toolbar = ({ className, api, date, ...rest }) => {
   const classes = useStyles();
   const { state } = useContext(AuthContext);
   const token = localStorage.getItem('token');
+
   let selectedFile;
 
   const handleChange = event => {
@@ -95,7 +95,7 @@ const Toolbar = ({ className, api, date, ...rest }) => {
           }}
           className={classes.importButton}
         >
-          Export
+          Export Jadwal
         </Button>
       </Box>
       <div id="alert-handler"></div>

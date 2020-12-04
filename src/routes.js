@@ -4,10 +4,10 @@ import DashboardLayout from 'src/layouts/DashboardLayout';
 import MainLayout from 'src/layouts/MainLayout';
 import AccountView from 'src/views/account';
 import Siswa from 'src/views/siswa';
+import Guru from 'src/views/guru';
 import Dashboard from 'src/views/dashboard';
 import Login from 'src/views/auth/Login';
-import Absen from 'src/views/absen';
-import Jadwal from 'src/views/jadwal';
+import Kelas from 'src/views/kelas';
 import NotFoundView from 'src/views/errors/NotFoundView';
 
 const routes = [
@@ -17,9 +17,9 @@ const routes = [
     children: [
       { path: 'account', element: <AccountView /> },
       { path: 'siswa', element: <Siswa /> },
+      { path: 'guru', element: <Guru /> },
       { path: 'dashboard', element: <Dashboard /> },
-      { path: 'absen', element: <Absen /> },
-      { path: 'jadwal', element: <Jadwal /> },
+      { path: 'kelas', element: <Kelas /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

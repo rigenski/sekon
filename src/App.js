@@ -17,7 +17,7 @@ const initialState = {
     admin: 'https://sekon.herokuapp.com/api/v2/admin/',
     siswa: 'http://sekon.herokuapp.com/api/v2/siswa/',
     absen: 'https://sekon.herokuapp.com/api/v2/absen/',
-    guru: 'https://sekon.herokuapp.com/api/v2/guru/',
+    guru: 'http://sekon.herokuapp.com/api/v2/guru/',
     jadwal: 'https://sekon.herokuapp.com/api/v2/jadwal'
   }
 };

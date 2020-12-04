@@ -11,7 +11,7 @@ import {
   colors
 } from '@material-ui/core';
 import ClassIcon from '@material-ui/icons/Class';
-import data from './../absen/data';
+import data from './../kelas/data';
 
 const useStyles = makeStyles(() => ({
   root: {

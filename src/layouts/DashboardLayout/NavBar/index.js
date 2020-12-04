@@ -14,7 +14,6 @@ import {
 } from '@material-ui/core';
 import {
   BarChart as BarChartIcon,
-  ShoppingBag as ShoppingBagIcon,
   User as UserIcon,
   Users as UsersIcon,
   LogOut as LogoutIcon,
@@ -34,14 +33,14 @@ const items = [
     title: 'Siswa'
   },
   {
-    href: '/app/absen',
-    icon: ShoppingBagIcon,
-    title: 'Absen'
+    href: '/app/guru',
+    icon: UsersIcon,
+    title: 'Guru'
   },
   {
-    href: '/app/jadwal',
+    href: '/app/kelas',
     icon: BookOpenIcon,
-    title: 'Jadwal'
+    title: 'Kelas'
   },
   {
     href: '/app/account',

@@ -97,12 +97,14 @@ const Toolbar = ({ className, api, date, ...rest }) => {
           variant="contained"
           onClick={() => absenToday()}
         >
-          Download Hari Ini
+          Download Absen Hari Ini
         </Button>
+
         <Button color="primary" variant="contained" onClick={() => absenAll()}>
-          Download Semua
+          Download Absen Semua
         </Button>
       </Box>
+      <div id="alert-handler"></div>
     </div>
   );
 };

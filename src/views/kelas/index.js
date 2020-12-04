@@ -3,6 +3,7 @@ import { Box, Container, Grid, makeStyles } from '@material-ui/core';
 import moment from 'moment';
 import Page from 'src/components/Page';
 import Toolbar from './Toolbar';
+import ToolbarButtom from './ToolbarButtom';
 import ProductCard from './ProductCard';
 import data from './data';
 import { AuthContext } from './../../App';
@@ -28,8 +29,8 @@ const ProductList = () => {
   return (
     <Page className={classes.root} title="Absen">
       <Container maxWidth={false}>
-        <Toolbar api={state.api.absen} date={date} />
-        <Box mt={3}>
+        <Toolbar />
+        <Box mt={3} mb={3}>
           <Grid container spacing={3}>
             {products.map(product => (
               <Grid item key={product.id} lg={4} md={6} xs={12}>
@@ -43,6 +44,7 @@ const ProductList = () => {
             ))}
           </Grid>
         </Box>
+        <ToolbarButtom api={state.api.absen} date={date} />
       </Container>
     </Page>
   );
