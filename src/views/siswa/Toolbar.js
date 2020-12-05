@@ -53,7 +53,7 @@ const Toolbar = ({ className, ...rest }) => {
           rowObject.map(row =>
             axios
               .post(
-                'https://sekon.herokuapp.com/api/v2/siswa/',
+                'https://sekon.herokuapp.com/api/v2/siswa',
                 {
                   kelas: row.kelas,
                   nama: row.nama,
