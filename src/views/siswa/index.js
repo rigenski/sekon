@@ -4,8 +4,6 @@ import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
 import axios from 'axios';
-import { AuthContext } from './../../App';
-
 const useStyles = makeStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.dark,
@@ -17,12 +15,11 @@ const useStyles = makeStyles(theme => ({
 
 const SiswaListView = () => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
   const [siswas, setSiswas] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const getData = await axios(state.api.siswa);
+      const getData = await axios('https://sekon.herokuapp.com/api/v2/siswa');
       const res = getData.data;
       setSiswas(res.result);
     };

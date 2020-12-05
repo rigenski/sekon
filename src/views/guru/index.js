@@ -4,7 +4,6 @@ import Page from 'src/components/Page';
 import Results from './Results';
 import Toolbar from './Toolbar';
 import axios from 'axios';
-import { AuthContext } from '../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -17,12 +16,11 @@ const useStyles = makeStyles(theme => ({
 
 const GuruListView = () => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
   const [guru, setGurus] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const getData = await axios(state.api.guru);
+      const getData = await axios('https://sekon.herokuapp.com/api/v2/guru/');
       const res = getData.data;
       setGurus(res.result);
     };

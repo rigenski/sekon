@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/People';
-import { AuthContext } from './../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,12 +33,11 @@ const useStyles = makeStyles(theme => ({
 
 const Budget = ({ className, ...rest }) => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
   const [guru, setGuru] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const getData = await axios(state.api.guru);
+      const getData = await axios('https://sekon.herokuapp.com/api/v2/guru/');
       const res = getData.data;
       setGuru(res.result);
     };

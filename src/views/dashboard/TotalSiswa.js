@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -12,7 +12,6 @@ import {
   makeStyles
 } from '@material-ui/core';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
-import { AuthContext } from './../../App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,12 +33,11 @@ const useStyles = makeStyles(theme => ({
 
 const TotalCustomers = ({ className, ...rest }) => {
   const classes = useStyles();
-  const { state } = useContext(AuthContext);
   const [siswa, setSiswa] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const getData = await axios(state.api.siswa);
+      const getData = await axios('https://sekon.herokuapp.com/api/v2/siswa/');
       const res = getData.data;
       setSiswa(res.result);
     };
