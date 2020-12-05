@@ -48,12 +48,11 @@ const Toolbar = ({ className, ...rest }) => {
               // Authorization: 'Bearer ' + token
             }
           };
-          console.log(rowObject);
 
           rowObject.map(row =>
             axios
               .post(
-                'http://sekon.herokuapp.com/api/v2/guru/',
+                'https://sekon.herokuapp.com/api/v2/guru/',
                 {
                   email: row.email,
                   wali: row.wali,
