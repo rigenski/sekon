@@ -49,12 +49,11 @@ const Toolbar = ({ className, ...rest }) => {
               // Authorization: 'Bearer ' + token
             }
           };
-          console.log(rowObject);
 
           rowObject.map(row =>
             axios
               .post(
-                `${state.api.siswa}`,
+                'http://sekon.herokuapp.com/api/v2/siswa/',
                 {
                   kelas: row.kelas,
                   nama: row.nama,

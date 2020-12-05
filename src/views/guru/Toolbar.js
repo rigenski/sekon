@@ -53,7 +53,7 @@ const Toolbar = ({ className, ...rest }) => {
           rowObject.map(row =>
             axios
               .post(
-                `${state.api.guru}`,
+                'http://sekon.herokuapp.com/api/v2/guru/',
                 {
                   email: row.email,
                   wali: row.wali,
